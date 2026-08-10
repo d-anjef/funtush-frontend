@@ -106,6 +106,7 @@ export default function MyTreksPage() {
               {tab.label}
               {count > 0 && (
                 <span
+                suppressHydrationWarning
                   className={cn(
                     'rounded-full px-2 py-0.5 text-xs font-semibold',
                     isActive
