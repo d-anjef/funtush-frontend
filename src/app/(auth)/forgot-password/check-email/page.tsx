@@ -2,10 +2,9 @@
 
 /**
  * Forgot Password — Check Email
- 
  */
 
-import  { Suspense, useState } from 'react';
+import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Mail } from 'lucide-react';
@@ -22,7 +21,6 @@ function CheckEmailContent() {
 
   const handleResend = () => {
     setIsResending(true);
-    // Mock resend
     setTimeout(() => {
       toast.success('Reset link sent again. Check your inbox.');
       setIsResending(false);
@@ -31,38 +29,29 @@ function CheckEmailContent() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-neutral-100 px-4 py-8">
-
-      <div className="grid w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl md:grid-cols-2">
-
+      <div className="grid w-full max-w-5xl min-h-[580px] overflow-hidden rounded-2xl bg-white shadow-xl md:grid-cols-2">
         {/* LEFT — Purple Panel */}
         <AuthLeftPanel />
 
         {/* RIGHT — Check Email Confirmation */}
-        <div className="flex items-center justify-center bg-white px-8 py-10 sm:px-12">
-
+        <div className="flex min-h-[580px] items-center justify-center bg-white px-8 py-10 sm:px-12">
           <div className="w-full max-w-sm text-center">
-
             {/* Envelope Icon */}
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-neutral-100">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary-50">
               <Mail className="h-9 w-9 text-primary-600" strokeWidth={1.8} />
             </div>
 
-            {/* Heading */}
             <h2 className="mt-6 text-2xl font-bold text-neutral-900">Check your email</h2>
 
-            {/* Description */}
             <p className="mt-2 text-sm text-neutral-600">
               We&apos;ve sent a password reset link to
             </p>
-            <p className="mt-1 text-sm font-medium text-primary-600 break-all">
-              {email}
-            </p>
+            <p className="mt-1 break-all text-sm font-medium text-primary-600">{email}</p>
 
             <p className="mt-6 text-sm text-neutral-600">
               Didn&apos;t receive that email? Check your spam folder or try again.
             </p>
 
-            {/* Resend Button */}
             <button
               onClick={handleResend}
               disabled={isResending}
@@ -71,14 +60,12 @@ function CheckEmailContent() {
               {isResending ? 'Sending...' : 'Resend email'}
             </button>
 
-            {/* Back to login */}
             <Link
               href={ROUTES.AUTH.LOGIN}
               className="mt-10 inline-block text-sm font-semibold text-primary-600 hover:underline"
             >
               Back to login
             </Link>
-
           </div>
         </div>
       </div>
