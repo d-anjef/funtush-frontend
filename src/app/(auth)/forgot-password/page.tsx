@@ -36,26 +36,23 @@ export default function ForgotPasswordPage() {
       return;
     }
 
-    // Mock: pretend we sent an email, then redirect
     setTimeout(() => {
       setIsLoading(false);
-      router.push(`${ROUTES.AUTH.FORGOT_PASSWORD_CHECK}?email=${encodeURIComponent(email.trim())}`);
+      router.push(
+        `${ROUTES.AUTH.FORGOT_PASSWORD_CHECK}?email=${encodeURIComponent(email.trim())}`,
+      );
     }, 500);
   };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-neutral-100 px-4 py-8">
-
-      <div className="grid w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl md:grid-cols-2">
-
+      <div className="grid w-full max-w-5xl min-h-[580px] overflow-hidden rounded-2xl bg-white shadow-xl md:grid-cols-2">
         {/* LEFT — Purple Panel */}
         <AuthLeftPanel />
 
         {/* RIGHT — Forgot Password Form */}
-        <div className="flex items-center justify-center bg-white px-8 py-10 sm:px-12">
-
+        <div className="flex min-h-[580px] items-center justify-center bg-white px-8 py-10 sm:px-12">
           <div className="w-full max-w-sm">
-
             {/* Back to login */}
             <Link
               href={ROUTES.AUTH.LOGIN}
@@ -71,14 +68,12 @@ export default function ForgotPasswordPage() {
             </p>
 
             <form onSubmit={handleSubmit} noValidate className="mt-6 space-y-4">
-
-              {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-semibold text-neutral-900">
                   Email
                 </label>
                 <div className="relative mt-1">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
+                  <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
                   <input
                     id="email"
                     type="email"
@@ -86,12 +81,11 @@ export default function ForgotPasswordPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
                     autoComplete="email"
-                    className="w-full rounded-lg border bg-white pl-9 pr-4 py-2.5 text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:ring-2 border-neutral-300 focus:border-primary-500 focus:ring-primary-100"
+                    className="w-full rounded-lg border border-neutral-300 bg-white py-2.5 pl-9 pr-4 text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
                   />
                 </div>
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={isLoading}
@@ -101,14 +95,15 @@ export default function ForgotPasswordPage() {
               </button>
             </form>
 
-            {/* Footer link */}
             <p className="mt-6 text-center text-sm text-neutral-700">
               Remember your password?{' '}
-              <Link href={ROUTES.AUTH.LOGIN} className="font-semibold text-primary-600 hover:underline">
+              <Link
+                href={ROUTES.AUTH.LOGIN}
+                className="font-semibold text-primary-600 hover:underline"
+              >
                 Login
               </Link>
             </p>
-
           </div>
         </div>
       </div>

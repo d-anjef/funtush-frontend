@@ -25,7 +25,7 @@ export function AuthLeftPanel({
   description = 'Log in to see your upcoming departures, chat with your guide, and access live SOS during your trek.',
 }: AuthLeftPanelProps) {
   return (
-    <div className="relative hidden overflow-hidden bg-primary-600 md:flex md:flex-col md:justify-center md:px-10 lg:px-12">
+    <div className="relative hidden h-full min-h-[580px] overflow-hidden bg-primary-600 md:flex md:flex-col md:justify-center md:px-10 lg:px-12">
 
       {/* Decorative circles (top-right + bottom-left) */}
       <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-white/10" />
